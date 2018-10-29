@@ -1,0 +1,24 @@
+{
+  "name": "tweets",
+  "active": true,
+  "proxy": {
+    "preserve_host": false,
+    "listen_path": "/tweets/*",
+    "upstreams": {
+      "balancing": "roundrobin",
+      "targets": [{ "target": "http://tweetmanagement:8082/tweets" }]
+    },
+    "strip_path": false,
+    "append_path": false,
+    "methods": ["GET", "POST", "PUT", "DELETE"]
+  },
+  "plugins": [
+    {
+      "name": "oauth2",
+      "enabled": true,
+      "config": {
+        "server_name": "auth"
+      }
+    }
+  ]
+}
