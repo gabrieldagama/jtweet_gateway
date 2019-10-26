@@ -19,6 +19,22 @@
       "config": {
         "server_name": "auth"
       }
-    }
+    },
+    {
+      "name":"cors",
+      "enabled":true,
+      "config":{
+        "domains":["*"],
+        "exposed_headers":[],
+        "methods":[
+           "POST",
+           "GET",
+           "PUT",
+           "DELETE",
+           "OPTIONS"
+        ],
+        "request_headers":[]
+      }
+    }   
   ]
 }
