@@ -1,16 +1,16 @@
 {
-  "name": "users",
+  "name": "get-user-data",
   "active": true,
   "proxy": {
     "preserve_host": false,
-    "listen_path": "/users/*",
+    "listen_path": "/users/",
     "upstreams": {
       "balancing": "roundrobin",
       "targets": [{ "target": "http://customermanagement:8081/users" }]
     },
     "strip_path": false,
     "append_path": false,
-    "methods": ["GET", "POST", "PUT", "DELETE"]
+    "methods": ["GET"]
   },
   "plugins": [
     {
