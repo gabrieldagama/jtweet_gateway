@@ -8,7 +8,7 @@
          "balancing":"roundrobin",
          "targets":[
             {
-               "target":"http://customermanagement:8081/users/create"
+               "target":"http://customermanagement:8081/v1/users/create"
             }
          ]
       },

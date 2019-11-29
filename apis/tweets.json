@@ -6,7 +6,7 @@
     "listen_path": "/tweets/*",
     "upstreams": {
       "balancing": "roundrobin",
-      "targets": [{ "target": "http://tweetmanagement:8082/tweets" }]
+      "targets": [{ "target": "http://tweetmanagement:8082/v1/tweets" }]
     },
     "strip_path": false,
     "append_path": false,

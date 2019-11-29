@@ -6,7 +6,7 @@
     "listen_path": "/users/",
     "upstreams": {
       "balancing": "roundrobin",
-      "targets": [{ "target": "http://customermanagement:8081/users" }]
+      "targets": [{ "target": "http://customermanagement:8081/v1/users" }]
     },
     "strip_path": false,
     "append_path": false,
