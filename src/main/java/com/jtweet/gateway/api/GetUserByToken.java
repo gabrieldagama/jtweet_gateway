@@ -10,24 +10,24 @@ import org.springframework.web.client.RestTemplate;
 import java.util.HashMap;
 
 @Component
-public class TokenValidation {
+public class GetUserByToken {
 
     @Autowired
     private RestTemplate restTemplate;
 
-    @Value("{$jtweet.services.user.endpoint}")
+    @Value("${jtweet.services.user.endpoint}")
     private String userEndpoint;
 
-    public HashMap validateToken(String token) throws RestClientException {
-        HttpEntity<String> request = createRequestWithStringBody(token);
+    public HashMap execute(String token) throws RestClientException {
+        HttpEntity<String> request = createRequest(token);
         return restTemplate.postForObject(
-                userEndpoint+"/v1/users/validateJwt",
+                userEndpoint + "/v1/users/validateJwt",
                 request,
                 HashMap.class
         );
     }
 
-    private HttpEntity<String> createRequestWithStringBody(String body) {
+    private HttpEntity<String> createRequest(String body) {
         return new HttpEntity<>(body);
     }
 }

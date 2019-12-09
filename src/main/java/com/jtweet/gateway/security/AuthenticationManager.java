@@ -1,6 +1,6 @@
 package com.jtweet.gateway.security;
 
-import com.jtweet.gateway.api.TokenValidation;
+import com.jtweet.gateway.api.GetUserByToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,13 +20,13 @@ import java.util.List;
 public class AuthenticationManager implements ReactiveAuthenticationManager {
 
     @Autowired
-    private TokenValidation tokenValidationApi;
+    private GetUserByToken getUserByTokenApi;
 
     @Override
     public Mono<Authentication> authenticate(Authentication authentication) {
         String authToken = authentication.getCredentials().toString();
         try {
-            HashMap userHashMap = tokenValidationApi.validateToken(authToken);
+            HashMap userHashMap = getUserByTokenApi.execute(authToken);
             List<GrantedAuthority> roles = new ArrayList<>();
             roles.add(new SimpleGrantedAuthority(userHashMap.get("role").toString()));
             UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
