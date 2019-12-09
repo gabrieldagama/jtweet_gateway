@@ -41,12 +41,17 @@ public class TweetsController {
     }
 
     @GetMapping
-    public Mono<ResponseEntity<byte[]>> tweetsList(ProxyExchange<byte[]> proxy, @RequestHeader(HttpHeaders.AUTHORIZATION) String authHeader) throws Exception {
+    public Mono<ResponseEntity<byte[]>> tweetsList(ProxyExchange<byte[]> proxy) {
         return proxy.uri(tweetEndpoint.toString() + "/v1/tweets").get();
     }
 
     @GetMapping("/{id}")
-    public Mono<ResponseEntity<byte[]>> tweet(ProxyExchange<byte[]> proxy) throws Exception {
+    public Mono<ResponseEntity<byte[]>> tweet(ProxyExchange<byte[]> proxy) {
         return proxy.uri(tweetEndpoint.toString() + "/v1/tweets").get();
+    }
+
+    @DeleteMapping("/{id}")
+    public Mono<ResponseEntity<byte[]>> deleteTweet(ProxyExchange<byte[]> proxy) {
+        return proxy.uri(tweetEndpoint.toString() + "/v1/tweets").delete();
     }
 }
