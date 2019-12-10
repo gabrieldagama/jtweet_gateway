@@ -15,6 +15,7 @@ import java.net.URI;
 import java.util.HashMap;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/v1/tweets")
 public class TweetsController {
 

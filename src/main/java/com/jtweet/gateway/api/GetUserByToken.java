@@ -21,7 +21,7 @@ public class GetUserByToken {
     public HashMap execute(String token) throws RestClientException {
         HttpEntity<String> request = createRequest(token);
         return restTemplate.postForObject(
-                userEndpoint + "/v1/users/validateJwt",
+                userEndpoint + "/v1/users/jwt",
                 request,
                 HashMap.class
         );
